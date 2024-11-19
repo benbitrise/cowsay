@@ -22,3 +22,6 @@ workflows:
             set -x
 
             echo "Hello world"
+  submit_for_beta_review: {}
+  distribute_to_testing_groups: {}
+  submit_for_review: {}
