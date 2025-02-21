@@ -26,7 +26,8 @@ workflows:
             --ephemeral \
             --labels bitrise \
             --unattended \
-            --disableupdate
+            --disableupdate \ 
+            --name $uuidgen
     - script@1:
         inputs:
         - content: |-
