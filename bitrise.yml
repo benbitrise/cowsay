@@ -1,4 +1,5 @@
-format_version: "13"
+---
+format_version: '13'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: other
 workflows:
@@ -7,29 +8,16 @@ workflows:
     - script@1:
         title: Install GHA Runner
         inputs:
-        - content: |
-            #!/usr/bin/env bash
-            # fail if any commands fails
-            set -e
-            # make pipelines' return status equal the last command to exit with a non-zero status, or zero if all commands exit successfully
-            set -o pipefail
-            # debug log
-            set -x
-
-            name=$uuidgen
-
-            mkdir actions-runner && cd actions-runner
-            curl -o actions-runner-osx-arm64-2.322.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.322.0/actions-runner-osx-arm64-2.322.0.tar.gz
-            echo "67d3b4dd6f1eec8ec43dda12c189cff68ec3ba1dfa054791cb446ddcfb39d2aa  actions-runner-osx-arm64-2.322.0.tar.gz" | shasum -a 256 -c
-            tar xzf ./actions-runner-osx-arm64-2.322.0.tar.gz
-            ./config.sh \
-            --url https://github.com/benbitrise/cowsay \
-            --token $GHA_TOKEN \
-            --ephemeral \
-            --labels bitrise \
-            --unattended \
-            --disableupdate \ 
-            --name $(uuidgen)
+        - content: "#!/usr/bin/env bash\n# fail if any commands fails\nset -e\n# make
+            pipelines' return status equal the last command to exit with a non-zero
+            status, or zero if all commands exit successfully\nset -o pipefail\n#
+            debug log\nset -x\n\nmkdir actions-runner && cd actions-runner\ncurl -o
+            actions-runner-osx-arm64-2.322.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.322.0/actions-runner-osx-arm64-2.322.0.tar.gz\necho
+            \"67d3b4dd6f1eec8ec43dda12c189cff68ec3ba1dfa054791cb446ddcfb39d2aa  actions-runner-osx-arm64-2.322.0.tar.gz\"
+            | shasum -a 256 -c\ntar xzf ./actions-runner-osx-arm64-2.322.0.tar.gz\n./config.sh
+            \\\n--url https://github.com/benbitrise/cowsay \\\n--token $GHA_TOKEN
+            \\\n--ephemeral \\\n--labels bitrise \\\n--unattended \\\n--name $(uuidgen)
+            \\\n--disableupdate \n"
     - script@1:
         inputs:
         - content: |-
@@ -46,7 +34,7 @@ workflows:
         title: Run GHA
     triggers:
       push:
-      - branch: '*'
+      - branch: "*"
 meta:
   bitrise.io:
     stack: osx-xcode-16.2.x
