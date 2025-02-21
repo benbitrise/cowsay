@@ -26,7 +26,6 @@ workflows:
             --ephemeral \
             --labels bitrise \
             --unattended \
-            --runnergroup bitrise_runner_group \
             --disableupdate
     - script@1:
         inputs:
