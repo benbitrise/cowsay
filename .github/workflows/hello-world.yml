@@ -1,0 +1,14 @@
+name: Hello World
+
+on:
+  push:
+    branches:
+      - '**' 
+
+jobs:
+  say-hello:
+    runs-on:
+      - bitrise
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, World!"
