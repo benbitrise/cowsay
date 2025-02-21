@@ -32,6 +32,7 @@ workflows:
             # debug log
             set -x
 
+            cd actions-runner
             ./run.sh
         title: Run GHA
     triggers:
